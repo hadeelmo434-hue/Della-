@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>DELLA | The Dark Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#090909;
+  --surface:#111111;
+  --silver:#c7c7c7;
+  --white:#f4f4f4;
+  --muted:#858585;
+  --line:#292929;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'Cairo',sans-serif;
+  overflow-x:hidden;
+}
+
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  height:76px;
+  padding:0 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#090909ed;
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(15px);
+}
+
+.logo{
+  direction:ltr;
+  font-family:Georgia,serif;
+  font-size:27px;
+  letter-spacing:7px;
+}
+
+.logo span{color:#777}
+
+nav{
+  display:flex;
+  gap:27px;
+}
+
+nav a{
+  color:#999;
+  font-size:12px;
+  transition:.3s;
+}
+
+nav a:hover{color:white}
+
+.header-label{
+  font-size:10px;
+  color:#aaa;
+  border:1px solid #444;
+  padding:7px 13px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:590px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:90px 20px;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 65%,#ffffff10,transparent 55%),
+    linear-gradient(180deg,#101010,#090909);
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:440px;
+  height:440px;
+  border:1px solid #ffffff0b;
+  border-radius:50%;
+  box-shadow:0 0 100px #ffffff0a;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  border:1px solid #ffffff0a;
+  border-radius:50%;
+}
+
+.hero-content{position:relative;z-index:2}
+
+.english{
+  direction:ltr;
+  color:#888;
+  font-size:10px;
+  letter-spacing:6px;
+}
+
+.hero h1{
+  font-family:'Amiri',serif;
+  font-size:clamp(48px,8vw,78px);
+  font-weight:400;
+  line-height:1.5;
+  margin:25px 0 10px;
+}
+
+.hero h1 span{color:#999}
+
+.hero p{
+  color:#999;
+  font-size:14px;
+  line-height:2.4;
+}
+
+.main-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:13px 35px;
+  background:linear-gradient(120deg,#eeeeee,#999999);
+  color:#090909;
+  font-size:13px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.main-btn:hover{
+  background:white;
+  transform:translateY(-3px);
+}
+
+.hero-bottom{
+  margin-top:55px;
+  color:#555;
+  font-size:9px;
+  letter-spacing:5px;
+  direction:ltr;
+}
+
+/* SECTION */
+
+.section{
+  padding:85px 7%;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title small{
+  color:#777;
+  letter-spacing:5px;
+  font-size:10px;
+  direction:ltr;
+}
+
+.section-title h2{
+  font-family:'Amiri',serif;
+  font-weight:400;
+  font-size:39px;
+  margin:10px 0;
+}
+
+.section-title p{
+  color:#777;
+  font-size:12px;
+}
+
+/* SEARCH */
+
+.search{
+  max-width:420px;
+  margin:0 auto 40px;
+}
+
+.search input{
+  width:100%;
+  background:#111;
+  border:1px solid #303030;
+  padding:14px 20px;
+  color:white;
+  font-family:inherit;
+  outline:none;
+}
+
+.search input:focus{border-color:#999}
+
+/* PRODUCTS */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,310px));
+  justify-content:center;
+  gap:28px;
+}
+
+.card{
+  background:#101010;
+  border:1px solid #272727;
+  transition:.4s;
+  overflow:hidden;
+}
+
+.card:hover{
+  border-color:#777;
+  transform:translateY(-7px);
+}
+
+.cover{
+  height:370px;
+  margin:14px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse at 50% 40%,#62626248,transparent 48%),
+    linear-gradient(150deg,#242424,#090909 75%);
+  border:1px solid #555;
+}
+
+.cover:before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid #ffffff35;
+}
+
+.cover:after{
+  content:"";
+  position:absolute;
+  width:230px;
+  height:230px;
+  border:1px solid #ffffff16;
+  border-radius:50%;
+  box-shadow:0 0 50px #ffffff0b;
+}
+
+.cover-content{
+  position:relative;
+  z-index:2;
+  padding:15px;
+}
+
+.cover-brand{
+  color:#aaa;
+  font-size:9px;
+  letter-spacing:5px;
+  direction:ltr;
+  margin-bottom:65px;
+}
+
+.cover-title{
+  font-family:'Amiri',serif;
+  font-size:48px;
+  line-height:1.6;
+  text-shadow:0 0 25px #fff3;
+}
+
+.cover-rule{
+  height:1px;
+  width:45px;
+  background:#aaa;
+  margin:20px auto;
+}
+
+.cover-caption{
+  font-size:10px;
+  color:#aaa;
+  line-height:2;
+}
+
+.card-info{padding:8px 20px 22px}
+
+.card-info h3{
+  font-family:'Amiri',serif;
+  font-size:26px;
+  font-weight:400;
+}
+
+.category{
+  color:#999;
+  font-size:10px;
+  margin:5px 0 12px;
+}
+
+.card-info p{
+  color:#888;
+  font-size:12px;
+  line-height:2;
+  min-height:48px;
+}
+
+.card-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:20px;
+  border-top:1px solid #292929;
+  padding-top:17px;
+}
+
+.card-price{
+  font-size:20px;
+  font-weight:700;
+}
+
+.card-price small{
+  color:#888;
+  font-size:11px;
+}
+
+.details-btn{
+  background:transparent;
+  border:1px solid #777;
+  color:white;
+  padding:8px 17px;
+  font-size:11px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.details-btn:hover{
+  background:#ddd;
+  color:#111;
+}
+
+/* DETAIL WINDOW */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:#000000e8;
+  backdrop-filter:blur(12px);
+}
+
+.modal.open{display:flex}
+
+.modal-box{
+  width:100%;
+  max-width:510px;
+  max-height:90vh;
+  overflow:auto;
+  background:#111;
+  border:1px solid #555;
+  padding:28px;
+  position:relative;
+  animation:show .3s ease;
+}
+
+@keyframes show{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.close{
+  position:absolute;
+  left:20px;
+  top:12px;
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:27px;
+  cursor:pointer;
+}
+
+.modal-cover{
+  width:145px;
+  height:195px;
+  margin:15px auto 25px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:
+    radial-gradient(circle,#555,transparent 65%),
+    linear-gradient(140deg,#252525,#080808);
+  border:1px solid #777;
+  font-family:'Amiri',serif;
+  font-size:27px;
+  padding:15px;
+}
+
+.modal-box h2{
+  text-align:center;
+  font-family:'Amiri',serif;
+  font-size:32px;
+  font-weight:400;
+}
+
+.modal-box .genre{
+  text-align:center;
+  color:#999;
+  font-size:11px;
+  margin:7px 0 20px;
+}
+
+.modal-description{
+  color:#aaa;
+  font-size:13px;
+  line-height:2.5;
+  border-top:1px solid #303030;
+  border-bottom:1px solid #303030;
+  padding:18px 0;
+}
+
+.modal-price{
+  text-align:center;
+  font-size:25px;
+  margin:20px;
+}
+
+.modal-price small{
+  color:#888;
+  font-size:12px;
+}
+
+.buy{
+  width:100%;
+  padding:15px;
+  border:0;
+  background:#d2d2d2;
+  color:#090909;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.buy:hover{background:white}
+
+.note{
+  color:#777;
+  font-size:10px;
+  text-align:center;
+  margin-top:13px;
+  line-height:2;
+}
+
+/* ABOUT */
+
+.about{
+  padding:75px 20px;
+  text-align:center;
+  background:#101010;
+  border-top:1px solid #292929;
+  border-bottom:1px solid #292929;
+}
+
+.about h2{
+  font-family:'Amiri',serif;
+  font-size:35px;
+  font-weight:400;
+  margin:14px;
+}
+
+.about p{
+  max-width:550px;
+  margin:auto;
+  color:#888;
+  font-size:13px;
+  line-height:2.5;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:45px 20px;
+}
+
+footer .logo{font-size:24px}
+
+footer p{
+  font-size:11px;
+  color:#666;
+  margin-top:15px;
+  line-height:2;
+}
+
+@media(max-width:650px){
+  header{padding:0 5%;height:70px}
+  .logo{font-size:22px;letter-spacing:5px}
+  nav{gap:13px}
+  nav a{font-size:10px}
+  .header-label{display:none}
+  .hero{min-height:530px}
+  .section{padding:65px 5%}
+  .section-title h2{font-size:32px}
+  .cover{height:350px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#home">DELLA<span>.</span></a>
+
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#library">المكتبة</a>
+    <a href="#about">عن ديلا</a>
+  </nav>
+
+  <div class="header-label">DIGITAL BOOKS</div>
+</header>
+
+<!-- MAIN -->
+
+<section class="hero" id="home">
+  <div class="hero-content">
+
+    <div class="english">DELLA ORIGINAL STORIES</div>
+
+    <h1>
+      بعض الأسرار<br>
+      <span>لا تموت...</span>
+    </h1>
+
+    <p>
+      عوالم من الغموض، وحكايات تتجاوز حدود الخيال.<br>
+      افتح الصفحة الأولى... واترك الباقي للحكاية.
+    </p>
+
+    <a href="#library" class="main-btn">اكتشف المكتبة</a>
+
+    <div class="hero-bottom">
+      STORIES · MYSTERY · IMAGINATION
+    </div>
+  </div>
+</section>
+
+<!-- LIBRARY -->
+
+<section class="section" id="library">
+
+  <div class="section-title">
+    <small>THE COLLECTION</small>
+    <h2>مكتبة ديلا</h2>
+    <p>كل رواية تحمل عالمًا مختلفًا</p>
+  </div>
+
+  <div class="search">
+    <input
+      id="search"
+      type="search"
+      placeholder="ابحث عن روايتك..."
+      aria-label="البحث عن رواية">
+  </div>
+
+  <div class="products" id="products"></div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+  <div class="english">ABOUT DELLA</div>
+
+  <h2>ما وراء الكلمات</h2>
+
+  <p>
+    ديلا مكتبة رقمية لعشاق الحكايات.
+    نختار الكلمات بعناية، ونصنع عوالم تستحق أن تعيشها.
+    هنا لا تقرأ مجرد رواية، بل تبدأ رحلة جديدة مع كل صفحة.
+  </p>
+
+</section>
+
+<footer>
+  <div class="logo">DELLA<span>.</span></div>
+  <p>بعض الحكايات تبقى معك حتى بعد النهاية.</p>
+  <p>© 2026 DELLA ORIGINAL STORIES</p>
+</footer>
+
+<!-- BOOK DETAILS -->
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+
+  <div class="modal-box">
+
+    <button class="close" onclick="closeModal()" aria-label="إغلاق">×</button>
+
+    <div class="modal-cover" id="modalCover"></div>
+
+    <h2 id="modalTitle"></h2>
+
+    <div class="genre" id="modalGenre"></div>
+
+    <div class="modal-description" id="modalDescription"></div>
+
+    <div class="modal-price" id="modalPrice"></div>
+
+    <button class="buy" id="buyButton">
+      شراء الرواية
+    </button>
+
+    <div class="note">
+      كتاب رقمي PDF · الدفع الآمن عبر متجر زد
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+/* ==============================
+   إعدادات متجر ديلا
+============================== */
+
+/*
+  ضعي رابط منتج آخر رسالة في زد هنا.
+  مثال:
+  const CHECKOUT_URL = "https://your-store.com/products/last-letter";
+*/
+
+const CHECKOUT_URL = "ضع_رابط_منتج_زد_هنا";
+
+
+/* ==============================
+   الروايات
+   أضيفي رواياتك المستقبلية هنا
+============================== */
+
+const books = [
+
+  {
+    id:1,
+
+    title:"آخر رسالة",
+
+    english:"THE LAST LETTER",
+
+    category:"رعب نفسي · غموض · جريمة عائلية",
+
+    description:
+    "وصلتني رسالة من أختي بعد وفاتها بثلاث سنوات... وكانت تعرف شيئًا لم يعرفه أحد غيري. دفتر أسود، ومنزل مهجور، وصديقات يخفين أكثر مما يقلن. كل دليل يعيد ريم إلى سؤال واحد: ماذا حدث حقًا في ليلة الحادث؟",
+
+    price:15,
+
+    currency:"ريال",
+
+    format:"PDF",
+
+    checkout:CHECKOUT_URL
+
+  }
+
+];
+
+
+/* ==============================
+   عرض الروايات
+============================== */
+
+const products = document.getElementById("products");
+
+function renderBooks(list){
+
+  products.innerHTML = "";
+
+  if(list.length === 0){
+
+    products.innerHTML =
+    '<p style="color:#888;text-align:center">لم يتم العثور على روايات.</p>';
+
+    return;
+  }
+
+  list.forEach(book => {
+
+    const card = document.createElement("article");
+
+    card.className = "card";
+
+    card.innerHTML = `
+
+      <div class="cover">
+
+        <div class="cover-content">
+
+          <div class="cover-brand">DELLA ORIGINAL STORIES</div>
+
+          <div class="cover-title">${escapeHTML(book.title)}</div>
+
+          <div class="cover-rule"></div>
+
+          <div class="cover-caption">
+            ${escapeHTML(book.category)}
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card-info">
+
+        <h3>${escapeHTML(book.title)}</h3>
+
+        <div class="category">
+          ${escapeHTML(book.category)}
+        </div>
+
+        <p>
+          ${escapeHTML(book.description.slice(0,100))}...
+        </p>
+
+        <div class="card-bottom">
+
+          <div class="card-price">
+            ${book.price}
+            <small>ريال</small>
+          </div>
+
+          <button class="details-btn">
+            التفاصيل
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+    card.querySelector("button").addEventListener("click",()=>{
+      openBook(book.id);
+    });
+
+    products.appendChild(card);
+
+  });
+
+}
+
+
+/* ==============================
+   تفاصيل الرواية
+============================== */
+
+function openBook(id){
+
+  const book = books.find(b => b.id === id);
+
+  if(!book) return;
+
+  document.getElementById("modalTitle").textContent = book.title;
+
+  document.getElementById("modalGenre").textContent = book.category;
+
+  document.getElementById("modalDescription").textContent =
+  book.description;
+
+  document.getElementById("modalPrice").innerHTML =
+  `${book.price} <small>ريال سعودي</small>`;
+
+  document.getElementById("modalCover").textContent = book.title;
+
+  document.getElementById("modal").classList.add("open");
+
+  document.getElementById("buyButton").onclick = () => {
+
+    if(
+      !book.checkout ||
+      !book.checkout.startsWith("https://") ||
+      book.checkout.includes("ضع_رابط")
+    ){
+
+      alert("أضيفي رابط شراء الرواية من زد أولاً.");
+
+      return;
+    }
+
+    window.location.href = book.checkout;
+
+  };
+
+}
+
+function closeModal(){
+
+  document.getElementById("modal").classList.remove("open");
+
+}
+
+
+/* ==============================
+   البحث
+============================== */
+
+document.getElementById("search").addEventListener("input",function(){
+
+  const value = this.value.trim().toLowerCase();
+
+  const result = books.filter(book =>
+
+    book.title.toLowerCase().includes(value) ||
+    book.category.toLowerCase().includes(value)
+
+  );
+
+  renderBooks(result);
+
+});
+
+
+/* إغلاق النافذة عند الضغط خارجها */
+
+document.getElementById("modal").addEventListener("click",function(e){
+
+  if(e.target === this) closeModal();
+
+});
+
+
+/* حماية النصوص المعروضة */
+
+function escapeHTML(value){
+
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[character]);
+
+}
+
+
+/* تشغيل الموقع */
+
+renderBooks();
+
+</script>
+
+</body>
+</html>
